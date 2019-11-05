@@ -14,6 +14,14 @@ public class Country {
 	private String continent;
 	private String country;
 
+	public Country() {
+	}
+
+	public Country(String continent, String country) {
+		this.continent = continent;
+		this.country = country;
+	}
+
 	public String getId() {
 		return id;
 	}
