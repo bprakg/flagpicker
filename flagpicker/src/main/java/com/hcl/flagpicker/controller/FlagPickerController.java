@@ -23,12 +23,10 @@ public class FlagPickerController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@GetMapping
-	public List<Country> listAllFlags(@RequestParam String type, @RequestParam String name) {
-		logger.info("listAllFlags type = {} and name = {}", type, name);
-		List<Country> list = fr.findByContinent(name);
-		// List<Country> list = fr.findByCountry(name);
+	public List<Country> getAllFlags(@RequestParam String name) {
+		logger.info("List flag(s) for {}", name);
+		List<Country> list = fr.findByContinentOrCountry(name, name);
 		logger.info("Response {}", list);
 		return list;
-
 	}
 }

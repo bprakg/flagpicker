@@ -9,5 +9,5 @@ import com.hcl.flagpicker.model.Country;
 public interface FlagRepository extends Repository<Country, String> {
 	List<Country> findByContinent(String continent);
 
-	List<Country> findByCountry(String country);
+	List<Country> findByContinentOrCountry(String continent, String country);
 }
