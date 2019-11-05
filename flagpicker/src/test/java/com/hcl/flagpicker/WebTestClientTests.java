@@ -1,5 +1,6 @@
 package com.hcl.flagpicker;
 
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -43,8 +44,9 @@ public class WebTestClientTests {
 		Country ct = new Country("Africa", "Ethiopia");
 		List<Country> list = new ArrayList<>();
 		list.add(ct);
-		given(fr.findByContinentOrCountry(null, null)).willReturn(list);
-		mvc.perform(get("/flags?name=Ethiopia")).andExpect(content().json("{}"));
+		given(fr.findByContinentOrCountry(anyString(), anyString())).willReturn(list);
+		mvc.perform(get("/flags?name=Ethiopia"))
+				.andExpect(content().json("[ {\n" + "        \"country\": \"Ethiopia\"\n" + "    }]"));
 	}
 
 }
